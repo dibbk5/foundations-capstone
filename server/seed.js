@@ -13,7 +13,9 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 
 module.exports = {
   seed: (req, res) => {
-    sequelize.query(`
+    sequelize
+      .query(
+        `
         DROP TABLE IF EXISTS takeoffs;
 
         CREATE TABLE takeoffs (
@@ -33,6 +35,12 @@ module.exports = {
             ('Bushes', 'Count', false, 0), 
             ('Concrete', 'SF', false, 0),
             ('Grass', 'SF', false, 0);
-        `);
+        `
+      )
+      .then(() => {
+        console.log("Database seeded");
+        res.sendStatus(200);
+      })
+      .catch((err) => console.log("error seeding database", err));
   },
 };
