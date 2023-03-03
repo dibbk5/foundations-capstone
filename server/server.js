@@ -4,12 +4,15 @@ const app = express();
 const cors = require("cors");
 const { SERVER_PORT } = process.env;
 const { seed } = require("./seed.js");
-const {} = require("./controller.js");
+const { getAllInterior } = require("./controller.js");
 
 app.use(express.json());
 app.use(cors());
 
 //Seed Database
 app.post("/seed", seed);
+
+//Get All Interior Takeoffs
+app.get("/api/interior", getAllInterior);
 
 app.listen(SERVER_PORT, () => console.log(`Running on ${SERVER_PORT}`));
