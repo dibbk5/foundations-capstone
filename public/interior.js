@@ -7,6 +7,7 @@ function getInteriors() {
   axios
     .get(`${baseURL}/interior`)
     .then((res) => {
+      takeoffContainer.innerHTML = "";
       res.data.forEach((item) => {
         const takeoffElem = `
             <tr>
@@ -57,6 +58,20 @@ async function zeroOutTakeoff(id) {
     .catch((err) => console.log(err));
 
   selector.innerHTML = newTotal;
+}
+
+async function addInteriorTakeoff(e) {
+  let description = document.querySelector("#new-description");
+  let unit = document.querySelector("#new-unit");
+  let total = document.querySelector("#new-total");
+
+  let bodyObj = {
+    description: description.value,
+    unit: unit.value,
+    total: total.value,
+  };
+
+  axios.post(`${baseURL}/interior`, bodyObj).then(() => getInteriors());
 }
 
 getInteriors();

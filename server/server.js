@@ -9,6 +9,7 @@ const {
   plusTakeoff,
   minusTakeoff,
   zeroTakeoff,
+  newInteriorTakeoff,
 } = require("./controller.js");
 
 app.use(express.json());
@@ -24,5 +25,8 @@ app.get("/interior", getAllInterior);
 app.put("/plus/:id", plusTakeoff);
 app.put("/minus/:id", minusTakeoff);
 app.put("/zero/:id", zeroTakeoff);
+
+//Create new takeoff
+app.post("/interior", newInteriorTakeoff);
 
 app.listen(SERVER_PORT, () => console.log(`Running on ${SERVER_PORT}`));

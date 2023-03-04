@@ -26,7 +26,6 @@ module.exports = {
       .catch((err) => console.log(err));
   },
   plusTakeoff: (req, res) => {
-    console.log(req.body);
     let { id } = req.params;
 
     sequelize
@@ -42,7 +41,6 @@ module.exports = {
       .catch((err) => console.log(err));
   },
   minusTakeoff: (req, res) => {
-    console.log(req.body);
     let { id } = req.params;
 
     sequelize
@@ -58,7 +56,6 @@ module.exports = {
       .catch((err) => console.log(err));
   },
   zeroTakeoff: (req, res) => {
-    console.log(req.body);
     let { id } = req.params;
 
     sequelize
@@ -67,6 +64,21 @@ module.exports = {
     UPDATE takeoffs
     SET total = 0
     WHERE id = ${id};`
+      )
+      .then((dbResult) => {
+        res.status(200).send(dbResult[0]);
+      })
+      .catch((err) => console.log(err));
+  },
+  newInteriorTakeoff: (req, res) => {
+    let { description, unit, total } = req.body;
+
+    sequelize
+      .query(
+        `
+    INSERT INTO takeoffs (description, unit, interior, total)
+    VALUES ('${description}', '${unit}', true, ${total});
+    `
       )
       .then((dbResult) => {
         res.status(200).send(dbResult[0]);

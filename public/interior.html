@@ -36,14 +36,14 @@
         <label>Description</label>
         <input type="text" id="new-description" name="new-description">
         <label>Unit</label>
-            <select id="new-units" name="new-units">
+            <select id="new-unit" name="new-unit">
                 <option value="LF">LF</option>
                 <option value="SF">SF</option>
                 <option value="Count">Count</option>
             </select>
         <label>Total</label>
-    <input type="number" id="new-total" name="new-total">
-    <input type="button" value="Add Takeoff" class="takeoff-btn">
+        <input type="number" id="new-total" name="new-total">
+        <input type="button" value="Add Takeoff" class="takeoff-btn" onclick="addInteriorTakeoff()">
     </form>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="interior.js"></script>
