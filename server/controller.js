@@ -24,12 +24,20 @@ module.exports = {
       })
       .catch((err) => console.log(err));
   },
-  updateTakeoff: (req, res) => {
-    let { id, total } = req.body;
+  plusTakeoff: (req, res) => {
+    console.log(req.body);
+    let { id } = req.params;
 
-    sequelize.query(`
+    sequelize
+      .query(
+        `
     UPDATE takeoffs
-    SET total = ${total}
-    WHERE id = ${id};`);
+    SET total = total + 1
+    WHERE id = ${id};`
+      )
+      .then((dbResult) => {
+        res.status(200).send(dbResult[0]);
+      })
+      .catch((err) => console.log(err));
   },
 };

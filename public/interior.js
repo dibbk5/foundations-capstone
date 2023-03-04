@@ -11,8 +11,8 @@ function getInteriors() {
             <tr>
                 <td><div class="description">${item.description}</div></td>
                 <td><div>${item.unit}</div></td>
-                <td><button class="plus-btn type="plus" id="${item.id}" onclick="updateTakeoff">+</button></td>
-                <td><button class="minus-btn" type="minus" onclick="updateTakeoff">-</button></td>
+                <td><button class="plus-btn" onclick="updateTakeoff(${item.id}, 'plus')">+</button></td>
+                <td><button class="minus-btn" type="minus" onclick="updateTakeoff(${item.id}, 'minus')}">-</button></td>
                 <td><div class="totals">${item.total}</div></td>
                 <td><button class="zero-btn">X</button></td>
             </tr>`;
@@ -23,9 +23,12 @@ function getInteriors() {
     .catch((err) => console.log(err));
 }
 
-function updateTakeoff(id, type) {
+async function updateTakeoff(id, type) {
   if (type === "plus") {
-    axios.put(baseURL);
+    axios
+      .put(`${baseURL}/interior/${id}`, id)
+      .then()
+      .catch((err) => console.log(err));
   }
 }
 
