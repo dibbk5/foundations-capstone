@@ -1,4 +1,5 @@
 const takeoffContainer = document.querySelector("#takeoff-container");
+const newTakeoffContainer = document.querySelector("#new-takeoff");
 
 const baseURL = "http://localhost:4444";
 
@@ -14,7 +15,7 @@ function getInteriors() {
                 <td><button class="plus-btn" onclick="updateTakeoff(${item.id}, 'plus')">+</button></td>
                 <td><button class="minus-btn" type="minus" onclick="updateTakeoff(${item.id}, 'minus')">-</button></td>
                 <td><div class="totals" id="total${item.id}">${item.total}</div></td>
-                <td><button class="zero-btn">X</button></td>
+                <td><button class="zero-btn" onclick="zeroOutTakeoff(${item.id})">X</button></td>
             </tr>`;
 
         takeoffContainer.innerHTML += takeoffElem;
@@ -44,6 +45,18 @@ async function updateTakeoff(id, type) {
     newTotal -= 1;
     selector.innerHTML = newTotal;
   }
+}
+
+async function zeroOutTakeoff(id) {
+  const selector = document.getElementById(`total${id}`);
+  let newTotal = 0;
+
+  axios
+    .put(`${baseURL}/zero/${id}`, id)
+    .then()
+    .catch((err) => console.log(err));
+
+  selector.innerHTML = newTotal;
 }
 
 getInteriors();

@@ -57,4 +57,20 @@ module.exports = {
       })
       .catch((err) => console.log(err));
   },
+  zeroTakeoff: (req, res) => {
+    console.log(req.body);
+    let { id } = req.params;
+
+    sequelize
+      .query(
+        `
+    UPDATE takeoffs
+    SET total = 0
+    WHERE id = ${id};`
+      )
+      .then((dbResult) => {
+        res.status(200).send(dbResult[0]);
+      })
+      .catch((err) => console.log(err));
+  },
 };
