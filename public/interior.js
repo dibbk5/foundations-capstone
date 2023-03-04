@@ -74,4 +74,11 @@ async function addInteriorTakeoff(e) {
   axios.post(`${baseURL}/interior`, bodyObj).then(() => getInteriors());
 }
 
+async function resetTakeoffs() {
+  axios
+    .post(`${baseURL}/seed`)
+    .then(() => getInteriors())
+    .catch((err) => console.log(err));
+}
+
 getInteriors();

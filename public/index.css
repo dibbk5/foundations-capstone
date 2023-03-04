@@ -112,7 +112,6 @@ input {
 .plus-btn:hover{
 
     transition : 100ms;
-    /* padding: 10px 50px; */
     transform : translateY(-0px);
     background-color: #EAEBED;
     color: #A3BAC3;
@@ -200,6 +199,38 @@ input {
 }
 
 .takeoff-btn:hover{
+    transition : 1000ms;
+    padding: 10px 50px;
+    transform : translateY(-0px);
+    background-color: #EAEBED;
+    color: #007090;
+    border: solid 2px #007090;
+}
+
+.reset-btn {
+    font-weight: 0;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007090;
+    padding: 10px 30px;
+    border: solid #A3BAC3 2px;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
+    transition : 1000ms;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    cursor: pointer;
+    text-transform: uppercase;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    margin-left: 42%;
+
+}
+
+.reset-btn:hover{
     transition : 1000ms;
     padding: 10px 50px;
     transform : translateY(-0px);
