@@ -28,7 +28,7 @@ module.exports = {
 
         INSERT INTO takeoffs (description, unit, interior, total)
         VALUES ('Cabinets', 'LF', true, 0),
-            ('Countertop', 'SF', true, 0),
+            ('Countertops', 'SF', true, 0),
             ('Blinds', 'SF', true, 0),
             ('Refrigerators', 'Count', true, 0),
             ('Trees', 'Count', false, 0), 
