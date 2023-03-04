@@ -17,7 +17,8 @@ module.exports = {
       .query(
         `
         SELECT * FROM takeoffs
-        WHERE interior = true;`
+        WHERE interior = true
+        ORDER BY id ASC;`
       )
       .then((dbResult) => {
         res.status(200).send(dbResult[0]);
@@ -33,6 +34,22 @@ module.exports = {
         `
     UPDATE takeoffs
     SET total = total + 1
+    WHERE id = ${id};`
+      )
+      .then((dbResult) => {
+        res.status(200).send(dbResult[0]);
+      })
+      .catch((err) => console.log(err));
+  },
+  minusTakeoff: (req, res) => {
+    console.log(req.body);
+    let { id } = req.params;
+
+    sequelize
+      .query(
+        `
+    UPDATE takeoffs
+    SET total = total - 1
     WHERE id = ${id};`
       )
       .then((dbResult) => {
