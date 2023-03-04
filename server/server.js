@@ -13,6 +13,6 @@ app.use(cors());
 app.post("/seed", seed);
 
 //Get All Interior Takeoffs
-app.get("/api/interior", getAllInterior);
+app.get("/interior", getAllInterior);
 
 app.listen(SERVER_PORT, () => console.log(`Running on ${SERVER_PORT}`));
