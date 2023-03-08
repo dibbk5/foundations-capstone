@@ -85,4 +85,32 @@ module.exports = {
       })
       .catch((err) => console.log(err));
   },
+  getAllExterior: (req, res) => {
+    sequelize
+      .query(
+        `
+        SELECT * FROM takeoffs
+        WHERE interior = false
+        ORDER BY id ASC;`
+      )
+      .then((dbResult) => {
+        res.status(200).send(dbResult[0]);
+      })
+      .catch((err) => console.log(err));
+  },
+  newExteriorTakeoff: (req, res) => {
+    let { description, unit, total } = req.body;
+
+    sequelize
+      .query(
+        `
+    INSERT INTO takeoffs (description, unit, interior, total)
+    VALUES ('${description}', '${unit}', false, ${total});
+    `
+      )
+      .then((dbResult) => {
+        res.status(200).send(dbResult[0]);
+      })
+      .catch((err) => console.log(err));
+  },
 };

@@ -8,6 +8,45 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    
+    <header>
+        <h1>
+            Exterior Takeoffs
+        </h1>
+    </header>
+    <button class="switch-btn" onclick="window.location.href = 'interior.html'">Move to Interior</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Unit</th>
+                <th>Plus</th>
+                <th>Minus</th>
+                <th>Total</th>
+                <th>Zero Out</th>
+            </tr>
+        </thead>
+        <tbody id="takeoff-container">
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <form id="new-takeoff">
+        <label>Description</label>
+        <input type="text" id="new-description" name="new-description">
+        <label>Unit</label>
+            <select id="new-unit" name="new-unit">
+                <option value="LF">LF</option>
+                <option value="SF">SF</option>
+                <option value="Count">Count</option>
+            </select>
+        <label>Total</label>
+        <input type="number" id="new-total" name="new-total">
+        <input type="button" value="Add Takeoff" class="takeoff-btn" onclick="addExteriorTakeoff()">
+    </form>
+    <button class="reset-btn" onclick="resetTakeoffs()">Reset All Takeoffs</button>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="exterior.js"></script>
 </body>
 </html>
